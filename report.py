@@ -18,7 +18,7 @@ class PdfReport:
         pdf.add_page()
 
         #Add icon image
-        pdf.image("house.png", w=30, h=30)
+        pdf.image("./assets/house.png", w=30, h=30)
 
         #Insert title
         pdf.set_font(family='Arial', style='B', size=22)
@@ -39,5 +39,6 @@ class PdfReport:
         pdf.cell(80, 40, txt=str(flatmate2.pays(bill, flatmate1)), ln=1)
 
         #Save pdf
-        pdf.output(self.filename)
-        webbrowser.open('file:///'+os.path.realpath(self.filename))
+        relative_filename_path = f"assets/{self.filename}"
+        pdf.output(relative_filename_path)
+        webbrowser.open('file:///'+os.path.realpath(relative_filename_path))
